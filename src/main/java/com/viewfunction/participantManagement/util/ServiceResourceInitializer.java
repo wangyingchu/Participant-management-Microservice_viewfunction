@@ -21,11 +21,11 @@ import net.sf.ehcache.store.MemoryStoreEvictionPolicy;
 @WebListener
 public class ServiceResourceInitializer implements ServletContextListener{
 	
-	private static String LDAP_SERVER_ADDRESS=PerportyHandler.getPerportyValue(PerportyHandler.LDAP_SERVER_ADDRESS).trim();
-	private static String LDAP_SERVER_PORT=PerportyHandler.getPerportyValue(PerportyHandler.LDAP_SERVER_PORT).trim();
-	private static String LDAP_ADMIN_DN=PerportyHandler.getPerportyValue(PerportyHandler.LDAP_ADMIN_DN).trim();
-	private static String LDAP_ADMIN_PASSWORD=PerportyHandler.getPerportyValue(PerportyHandler.LDAP_ADMIN_PASSWORD).trim();	
-	private static String AUTHORIZATION_TIMEOUT_IN_MINUTES=PerportyHandler.getPerportyValue(PerportyHandler.AUTHORIZATION_TIMEOUT_IN_MINUTES).trim();	
+	private static String LDAP_SERVER_ADDRESS= PropertyHandler.getPerportyValue(PropertyHandler.LDAP_SERVER_ADDRESS).trim();
+	private static String LDAP_SERVER_PORT= PropertyHandler.getPerportyValue(PropertyHandler.LDAP_SERVER_PORT).trim();
+	private static String LDAP_ADMIN_DN= PropertyHandler.getPerportyValue(PropertyHandler.LDAP_ADMIN_DN).trim();
+	private static String LDAP_ADMIN_PASSWORD= PropertyHandler.getPerportyValue(PropertyHandler.LDAP_ADMIN_PASSWORD).trim();
+	private static String AUTHORIZATION_TIMEOUT_IN_MINUTES= PropertyHandler.getPerportyValue(PropertyHandler.AUTHORIZATION_TIMEOUT_IN_MINUTES).trim();
 	
 	private LdapConnectionPool _LDAPConnectionPool; 
 	private CacheManager _CacheManager;

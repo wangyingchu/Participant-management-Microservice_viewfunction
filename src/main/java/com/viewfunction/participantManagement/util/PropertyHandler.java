@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
-public class PerportyHandler {
+public class PropertyHandler {
 	private static Properties _properties;		
 	public static String LDAP_SERVER_ADDRESS="LDAP_SERVER_ADDRESS";
 	public static String LDAP_SERVER_PORT="LDAP_SERVER_PORT";

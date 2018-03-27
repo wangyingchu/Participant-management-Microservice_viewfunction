@@ -3,6 +3,7 @@ package com.viewfunction.participantmanagementservice;
 import com.viewfunction.participantManagement.authentication.restful.ParticipantAuthenticateService;
 import com.viewfunction.participantManagement.operation.restful.ParticipantOperationService;
 
+import com.viewfunction.participantmanagementservice.util.ApplicationLauncherUtil;
 import org.codehaus.jackson.jaxrs.JacksonJaxbJsonProvider;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -57,5 +58,6 @@ public class ParticipantManagementServiceApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ParticipantManagementServiceApplication.class, args);
+        ApplicationLauncherUtil.printApplicationConsoleBanner();
 	}
 }

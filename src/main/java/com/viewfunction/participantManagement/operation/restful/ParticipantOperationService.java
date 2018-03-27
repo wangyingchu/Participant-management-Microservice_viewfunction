@@ -23,7 +23,7 @@ import org.apache.cxf.jaxrs.ext.multipart.Attachment;
 import org.apache.cxf.jaxrs.ext.multipart.MultipartBody;
 
 import com.viewfunction.participantManagement.operation.util.ParticipantOperationUtil;
-import com.viewfunction.participantManagement.util.PerportyHandler;
+import com.viewfunction.participantManagement.util.PropertyHandler;
 import com.viewfunction.participantManagement.util.RuntimeEnvironmentHandler;
 import org.springframework.stereotype.Service;
 
@@ -32,8 +32,8 @@ import org.springframework.stereotype.Service;
 @Produces("application/json")
 public class ParticipantOperationService {
 	
-	private static String BINARYFILE_TEMPSTORAGE_FOLDER=PerportyHandler.getPerportyValue(PerportyHandler.BINARYFILE_TEMPSTORAGE_FOLDER).trim();
-	private static String BINARYFILE_UPLOADING_TEMPFILE_FOLDER=PerportyHandler.getPerportyValue(PerportyHandler.BINARYFILE_UPLOADING_TEMPFILE_FOLDER).trim();
+	private static String BINARYFILE_TEMPSTORAGE_FOLDER= PropertyHandler.getPerportyValue(PropertyHandler.BINARYFILE_TEMPSTORAGE_FOLDER).trim();
+	private static String BINARYFILE_UPLOADING_TEMPFILE_FOLDER= PropertyHandler.getPerportyValue(PropertyHandler.BINARYFILE_UPLOADING_TEMPFILE_FOLDER).trim();
 	
 	@GET
     @Path("/userInfo/facePhoto/{participantScope}/{userUid}/")

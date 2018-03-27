@@ -2,6 +2,7 @@ package com.viewfunction.participantManagement.authentication.util;
 
 import java.util.Date;
 
+import com.viewfunction.participantManagement.util.PropertyHandler;
 import net.sf.ehcache.Element;
 
 import org.apache.directory.api.ldap.model.cursor.SearchCursor;
@@ -23,20 +24,19 @@ import com.viewfunction.participantManagement.authentication.restful.Participant
 import com.viewfunction.participantManagement.authentication.restful.ParticipantLoginResultVO;
 import com.viewfunction.participantManagement.operation.restful.ParticipantBasicInfoVO;
 import com.viewfunction.participantManagement.operation.util.ParticipantOperationUtil;
-import com.viewfunction.participantManagement.util.PerportyHandler;
 import com.viewfunction.participantManagement.util.ServiceResourceHolder;
 
 public class ParticipantAuthenticationUtil {
-	private static String LDAP_SERVER_ADDRESS=PerportyHandler.getPerportyValue(PerportyHandler.LDAP_SERVER_ADDRESS).trim();
-	private static String LDAP_SERVER_PORT=PerportyHandler.getPerportyValue(PerportyHandler.LDAP_SERVER_PORT).trim();
-	private static String LDAP_ADMIN_DN=PerportyHandler.getPerportyValue(PerportyHandler.LDAP_ADMIN_DN).trim();
-	private static String LDAP_ADMIN_PASSWORD=PerportyHandler.getPerportyValue(PerportyHandler.LDAP_ADMIN_PASSWORD).trim();
-	private static String LDAP_PARTICIPANT_SEARCHBASE_DN=PerportyHandler.getPerportyValue(PerportyHandler.LDAP_PARTICIPANT_SEARCHBASE_DN).trim();	
-	private static String LDAP_PARTICIPANT_SEARCHNODE_OU=PerportyHandler.getPerportyValue(PerportyHandler.LDAP_PARTICIPANT_SEARCHNODE_OU).trim();	
+	private static String LDAP_SERVER_ADDRESS= PropertyHandler.getPerportyValue(PropertyHandler.LDAP_SERVER_ADDRESS).trim();
+	private static String LDAP_SERVER_PORT= PropertyHandler.getPerportyValue(PropertyHandler.LDAP_SERVER_PORT).trim();
+	private static String LDAP_ADMIN_DN= PropertyHandler.getPerportyValue(PropertyHandler.LDAP_ADMIN_DN).trim();
+	private static String LDAP_ADMIN_PASSWORD= PropertyHandler.getPerportyValue(PropertyHandler.LDAP_ADMIN_PASSWORD).trim();
+	private static String LDAP_PARTICIPANT_SEARCHBASE_DN= PropertyHandler.getPerportyValue(PropertyHandler.LDAP_PARTICIPANT_SEARCHBASE_DN).trim();
+	private static String LDAP_PARTICIPANT_SEARCHNODE_OU= PropertyHandler.getPerportyValue(PropertyHandler.LDAP_PARTICIPANT_SEARCHNODE_OU).trim();
 	//participant properties
-	private static String PARTICIPANT_PROPERTY_UID=PerportyHandler.getPerportyValue(PerportyHandler.PARTICIPANT_PROPERTY_UID).trim();
-	private static String PARTICIPANT_PROPERTY_PASSWORD=PerportyHandler.getPerportyValue(PerportyHandler.PARTICIPANT_PROPERTY_PASSWORD).trim();	
-	private static String PARTICIPANT_PROPERTY_USERSTATUS=PerportyHandler.getPerportyValue(PerportyHandler.PARTICIPANT_PROPERTY_USERSTATUS).trim();
+	private static String PARTICIPANT_PROPERTY_UID= PropertyHandler.getPerportyValue(PropertyHandler.PARTICIPANT_PROPERTY_UID).trim();
+	private static String PARTICIPANT_PROPERTY_PASSWORD= PropertyHandler.getPerportyValue(PropertyHandler.PARTICIPANT_PROPERTY_PASSWORD).trim();
+	private static String PARTICIPANT_PROPERTY_USERSTATUS= PropertyHandler.getPerportyValue(PropertyHandler.PARTICIPANT_PROPERTY_USERSTATUS).trim();
 	private static String USER_STATUS_ACTIVE="ACTIVE";
 	
 	public static ParticipantLoginResultVO participantPasswordVerify(ParticipantLoginInfoVO participantLoginInfoVO){

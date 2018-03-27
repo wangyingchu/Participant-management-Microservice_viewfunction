@@ -1,23 +1,24 @@
 package com.viewfunction.participantManagement.util;
 
 public class RuntimeEnvironmentHandler {
+
+    private static String APPLICATION_ROOT_PATH;
+
 	public static String getApplicationRootPath() {
-	    return "runtime/";
-	    /*
-        if(System.getProperty("catalina.home")!=null){
-           // running under tomcat container, set application root location to /WEB-INF
-           StringBuilder sb = new StringBuilder(PerportyHandler.class.getResource("").toString());
-           String OSType = System.getProperty("os.name");
-           if (OSType.startsWith("Windows")) {
-               sb.delete(0, 6); //this only work on windows system
-           } else {
-               sb.delete(0, 5);//this only work on Unix system
-           }
-           sb.reverse().delete(0, 52).reverse();
-           return sb.toString().replaceAll("%20", " ");
-        }else{            
-           return "";
+	    if(APPLICATION_ROOT_PATH==null){
+            String runtimeClassLocation=RuntimeEnvironmentHandler.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+            if(runtimeClassLocation.endsWith("/BOOT-INF/classes!/")){
+                //in spring boot jar mode
+                int folderIndex=runtimeClassLocation.indexOf("runtime/");
+                String applicationRootPath=runtimeClassLocation.substring(0,folderIndex).replace("file:","");
+                APPLICATION_ROOT_PATH= applicationRootPath+"runtime/";
+            }
+            if(runtimeClassLocation.endsWith("/target/classes/")){
+                //in development env mode
+                String applicationRootPath=runtimeClassLocation.replace("target/classes/","");
+                APPLICATION_ROOT_PATH= applicationRootPath+"runtime/";
+            }
         }
-        */
+	    return APPLICATION_ROOT_PATH;
    }
 }

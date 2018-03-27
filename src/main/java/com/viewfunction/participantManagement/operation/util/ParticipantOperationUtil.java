@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import com.viewfunction.participantManagement.util.PropertyHandler;
 import net.sf.ehcache.Element;
 
 import org.apache.directory.api.ldap.model.cursor.SearchCursor;
@@ -36,43 +37,43 @@ import com.viewfunction.participantManagement.operation.restful.ParticipantBasic
 import com.viewfunction.participantManagement.operation.restful.ParticipantChangePasswordResultVO;
 import com.viewfunction.participantManagement.operation.restful.ParticipantChangePasswordVO;
 import com.viewfunction.participantManagement.operation.restful.ParticipantDetailInfoVO;
-import com.viewfunction.participantManagement.util.PerportyHandler;
 import com.viewfunction.participantManagement.util.RuntimeEnvironmentHandler;
 import com.viewfunction.participantManagement.util.ServiceResourceHolder;
-import com.viewfunction.vfmab.restful.userManagement.UserBasicInfoVO;
-import com.viewfunction.vfmab.restfulClient.UserManagementServiceRESTClient;
+
+//import com.viewfunction.vfmab.restful.userManagement.UserBasicInfoVO;
+//import com.viewfunction.vfmab.restfulClient.UserManagementServiceRESTClient;
 
 public class ParticipantOperationUtil {
 	
-	private static String LDAP_SERVER_ADDRESS=PerportyHandler.getPerportyValue(PerportyHandler.LDAP_SERVER_ADDRESS).trim();
-	private static String LDAP_SERVER_PORT=PerportyHandler.getPerportyValue(PerportyHandler.LDAP_SERVER_PORT).trim();
-	private static String LDAP_ADMIN_DN=PerportyHandler.getPerportyValue(PerportyHandler.LDAP_ADMIN_DN).trim();
-	private static String LDAP_ADMIN_PASSWORD=PerportyHandler.getPerportyValue(PerportyHandler.LDAP_ADMIN_PASSWORD).trim();
-	private static String LDAP_PARTICIPANT_SEARCHBASE_DN=PerportyHandler.getPerportyValue(PerportyHandler.LDAP_PARTICIPANT_SEARCHBASE_DN).trim();	
-	private static String LDAP_PARTICIPANT_SEARCHNODE_OU=PerportyHandler.getPerportyValue(PerportyHandler.LDAP_PARTICIPANT_SEARCHNODE_OU).trim();	
-	private static String BINARYFILE_TEMPSTORAGE_FOLDER=PerportyHandler.getPerportyValue(PerportyHandler.BINARYFILE_TEMPSTORAGE_FOLDER).trim();
-	private static String BINARYFILE_PARTICIPANT_FACEPHOTO_FOLDER=PerportyHandler.getPerportyValue(PerportyHandler.BINARYFILE_PARTICIPANT_FACEPHOTO_FOLDER).trim();
-	private static String BUSINESS_BINARYFILE_FOLDER=PerportyHandler.getPerportyValue(PerportyHandler.BUSINESS_BINARYFILE_FOLDER).trim();
-	private static String DEFAULT_USERFACEPHOTO_GREEN=PerportyHandler.getPerportyValue(PerportyHandler.DEFAULT_USERFACEPHOTO_GREEN).trim();	
+	private static String LDAP_SERVER_ADDRESS= PropertyHandler.getPerportyValue(PropertyHandler.LDAP_SERVER_ADDRESS).trim();
+	private static String LDAP_SERVER_PORT= PropertyHandler.getPerportyValue(PropertyHandler.LDAP_SERVER_PORT).trim();
+	private static String LDAP_ADMIN_DN= PropertyHandler.getPerportyValue(PropertyHandler.LDAP_ADMIN_DN).trim();
+	private static String LDAP_ADMIN_PASSWORD= PropertyHandler.getPerportyValue(PropertyHandler.LDAP_ADMIN_PASSWORD).trim();
+	private static String LDAP_PARTICIPANT_SEARCHBASE_DN= PropertyHandler.getPerportyValue(PropertyHandler.LDAP_PARTICIPANT_SEARCHBASE_DN).trim();
+	private static String LDAP_PARTICIPANT_SEARCHNODE_OU= PropertyHandler.getPerportyValue(PropertyHandler.LDAP_PARTICIPANT_SEARCHNODE_OU).trim();
+	private static String BINARYFILE_TEMPSTORAGE_FOLDER= PropertyHandler.getPerportyValue(PropertyHandler.BINARYFILE_TEMPSTORAGE_FOLDER).trim();
+	private static String BINARYFILE_PARTICIPANT_FACEPHOTO_FOLDER= PropertyHandler.getPerportyValue(PropertyHandler.BINARYFILE_PARTICIPANT_FACEPHOTO_FOLDER).trim();
+	private static String BUSINESS_BINARYFILE_FOLDER= PropertyHandler.getPerportyValue(PropertyHandler.BUSINESS_BINARYFILE_FOLDER).trim();
+	private static String DEFAULT_USERFACEPHOTO_GREEN= PropertyHandler.getPerportyValue(PropertyHandler.DEFAULT_USERFACEPHOTO_GREEN).trim();
 	private static String defaultUserFacePhotoPath=RuntimeEnvironmentHandler.getApplicationRootPath()+BUSINESS_BINARYFILE_FOLDER+"/"+
 			DEFAULT_USERFACEPHOTO_GREEN;
 	//participant properties
-	private static String PARTICIPANT_PROPERTY_UID=PerportyHandler.getPerportyValue(PerportyHandler.PARTICIPANT_PROPERTY_UID).trim();
-	private static String PARTICIPANT_PROPERTY_ROLETYPE=PerportyHandler.getPerportyValue(PerportyHandler.PARTICIPANT_PROPERTY_ROLETYPE).trim();
-	private static String PARTICIPANT_PROPERTY_DESCRIPTION=PerportyHandler.getPerportyValue(PerportyHandler.PARTICIPANT_PROPERTY_DESCRIPTION).trim();
-	private static String PARTICIPANT_PROPERTY_DISPLAYNAME=PerportyHandler.getPerportyValue(PerportyHandler.PARTICIPANT_PROPERTY_DISPLAYNAME).trim();
-	private static String PARTICIPANT_PROPERTY_EMAILADDRESS=PerportyHandler.getPerportyValue(PerportyHandler.PARTICIPANT_PROPERTY_EMAILADDRESS).trim();
-	private static String PARTICIPANT_PROPERTY_MOBILEPHONE=PerportyHandler.getPerportyValue(PerportyHandler.PARTICIPANT_PROPERTY_MOBILEPHONE).trim();
-	private static String PARTICIPANT_PROPERTY_POSTALCODE=PerportyHandler.getPerportyValue(PerportyHandler.PARTICIPANT_PROPERTY_POSTALCODE).trim();
-	private static String PARTICIPANT_PROPERTY_ADDRESS=PerportyHandler.getPerportyValue(PerportyHandler.PARTICIPANT_PROPERTY_ADDRESS).trim();
-	private static String PARTICIPANT_PROPERTY_FIXEDPHONE=PerportyHandler.getPerportyValue(PerportyHandler.PARTICIPANT_PROPERTY_FIXEDPHONE).trim();
-	private static String PARTICIPANT_PROPERTY_TITLE=PerportyHandler.getPerportyValue(PerportyHandler.PARTICIPANT_PROPERTY_TITLE).trim();
-	private static String PARTICIPANT_PROPERTY_FACEPHOTO=PerportyHandler.getPerportyValue(PerportyHandler.PARTICIPANT_PROPERTY_FACEPHOTO).trim();
-	private static String PARTICIPANT_PROPERTY_PASSWORD=PerportyHandler.getPerportyValue(PerportyHandler.PARTICIPANT_PROPERTY_PASSWORD).trim();	
-	private static String PARTICIPANT_PROPERTY_USERSTATUS=PerportyHandler.getPerportyValue(PerportyHandler.PARTICIPANT_PROPERTY_USERSTATUS).trim();
-	private static String PARTICIPANT_PROPERTY_FEATURECATEGORIES=PerportyHandler.getPerportyValue(PerportyHandler.PARTICIPANT_PROPERTY_FEATURECATEGORIES).trim();
+	private static String PARTICIPANT_PROPERTY_UID= PropertyHandler.getPerportyValue(PropertyHandler.PARTICIPANT_PROPERTY_UID).trim();
+	private static String PARTICIPANT_PROPERTY_ROLETYPE= PropertyHandler.getPerportyValue(PropertyHandler.PARTICIPANT_PROPERTY_ROLETYPE).trim();
+	private static String PARTICIPANT_PROPERTY_DESCRIPTION= PropertyHandler.getPerportyValue(PropertyHandler.PARTICIPANT_PROPERTY_DESCRIPTION).trim();
+	private static String PARTICIPANT_PROPERTY_DISPLAYNAME= PropertyHandler.getPerportyValue(PropertyHandler.PARTICIPANT_PROPERTY_DISPLAYNAME).trim();
+	private static String PARTICIPANT_PROPERTY_EMAILADDRESS= PropertyHandler.getPerportyValue(PropertyHandler.PARTICIPANT_PROPERTY_EMAILADDRESS).trim();
+	private static String PARTICIPANT_PROPERTY_MOBILEPHONE= PropertyHandler.getPerportyValue(PropertyHandler.PARTICIPANT_PROPERTY_MOBILEPHONE).trim();
+	private static String PARTICIPANT_PROPERTY_POSTALCODE= PropertyHandler.getPerportyValue(PropertyHandler.PARTICIPANT_PROPERTY_POSTALCODE).trim();
+	private static String PARTICIPANT_PROPERTY_ADDRESS= PropertyHandler.getPerportyValue(PropertyHandler.PARTICIPANT_PROPERTY_ADDRESS).trim();
+	private static String PARTICIPANT_PROPERTY_FIXEDPHONE= PropertyHandler.getPerportyValue(PropertyHandler.PARTICIPANT_PROPERTY_FIXEDPHONE).trim();
+	private static String PARTICIPANT_PROPERTY_TITLE= PropertyHandler.getPerportyValue(PropertyHandler.PARTICIPANT_PROPERTY_TITLE).trim();
+	private static String PARTICIPANT_PROPERTY_FACEPHOTO= PropertyHandler.getPerportyValue(PropertyHandler.PARTICIPANT_PROPERTY_FACEPHOTO).trim();
+	private static String PARTICIPANT_PROPERTY_PASSWORD= PropertyHandler.getPerportyValue(PropertyHandler.PARTICIPANT_PROPERTY_PASSWORD).trim();
+	private static String PARTICIPANT_PROPERTY_USERSTATUS= PropertyHandler.getPerportyValue(PropertyHandler.PARTICIPANT_PROPERTY_USERSTATUS).trim();
+	private static String PARTICIPANT_PROPERTY_FEATURECATEGORIES= PropertyHandler.getPerportyValue(PropertyHandler.PARTICIPANT_PROPERTY_FEATURECATEGORIES).trim();
 	////System data sync
-	private static String SYNC_ADDNEW_PARTICIPANT_IN_ACTIVITYSPACE=PerportyHandler.getPerportyValue(PerportyHandler.SYNC_ADDNEW_PARTICIPANT_IN_ACTIVITYSPACE).trim();
+	private static String SYNC_ADDNEW_PARTICIPANT_IN_ACTIVITYSPACE= PropertyHandler.getPerportyValue(PropertyHandler.SYNC_ADDNEW_PARTICIPANT_IN_ACTIVITYSPACE).trim();
 	private static String facePhotoDivStr="_DIV_";
 	public static String USER_STATUS_ACTIVE="ACTIVE";
 	public static String USER_STATUS_DISABLED="INACTIVE";
@@ -1402,8 +1403,10 @@ public class ParticipantOperationUtil {
 				currentConnection.close();			
 			}else{
 				ServiceResourceHolder.getLdapConnectionPool().releaseConnection(currentConnection);
-			}	
-			
+			}
+
+
+			/*
 			boolean syncAddNewParticipantinActivitySpaceFlag=Boolean.parseBoolean(SYNC_ADDNEW_PARTICIPANT_IN_ACTIVITYSPACE);
 			if(syncAddNewParticipantinActivitySpaceFlag){
 				UserBasicInfoVO targetUserBasicInfoVO=new UserBasicInfoVO();
@@ -1411,7 +1414,9 @@ public class ParticipantOperationUtil {
 				targetUserBasicInfoVO.setUserDisplayName(participantDetailInfoVO.getDisplayName());
 				UserManagementServiceRESTClient.syncAddNewParticipant(participantScope, targetUserBasicInfoVO);
 				
-			}
+			}*/
+
+
 			return participantDetailInfoVO;				
 		}catch(LdapException e){
 			e.printStackTrace();
