@@ -1,4 +1,4 @@
-package com.viewfunction.participantmanagementservice;
+package com.viewfunction.participantManagementService;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

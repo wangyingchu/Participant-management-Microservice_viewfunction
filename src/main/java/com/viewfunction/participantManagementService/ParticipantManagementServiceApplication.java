@@ -1,9 +1,9 @@
-package com.viewfunction.participantmanagementservice;
+package com.viewfunction.participantManagementService;
 
 import com.viewfunction.participantManagement.authentication.restful.ParticipantAuthenticateService;
 import com.viewfunction.participantManagement.operation.restful.ParticipantOperationService;
 
-import com.viewfunction.participantmanagementservice.util.ApplicationLauncherUtil;
+import com.viewfunction.participantManagementService.util.ApplicationLauncherUtil;
 import org.codehaus.jackson.jaxrs.JacksonJaxbJsonProvider;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

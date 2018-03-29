@@ -1,4 +1,4 @@
-package com.viewfunction.participantmanagementservice.util;
+package com.viewfunction.participantManagementService.util;
 
 import com.viewfunction.participantManagement.util.RuntimeEnvironmentHandler;
 
