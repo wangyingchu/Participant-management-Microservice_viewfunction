@@ -37,7 +37,7 @@ import com.viewfunction.participantManagement.operation.restful.ParticipantBasic
 import com.viewfunction.participantManagement.operation.restful.ParticipantChangePasswordResultVO;
 import com.viewfunction.participantManagement.operation.restful.ParticipantChangePasswordVO;
 import com.viewfunction.participantManagement.operation.restful.ParticipantDetailInfoVO;
-import com.viewfunction.participantManagement.util.RuntimeEnvironmentHandler;
+import com.viewfunction.participantManagementService.util.RuntimeEnvironmentHandler;
 import com.viewfunction.participantManagement.util.ServiceResourceHolder;
 
 //import com.viewfunction.vfmab.restful.userManagement.UserBasicInfoVO;

@@ -1,4 +1,4 @@
-package com.viewfunction.participantManagement.util;
+package com.viewfunction.participantManagementService.util;
 
 public class RuntimeEnvironmentHandler {
 

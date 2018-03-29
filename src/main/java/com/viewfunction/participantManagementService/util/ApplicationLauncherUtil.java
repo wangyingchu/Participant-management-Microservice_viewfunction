@@ -1,7 +1,5 @@
 package com.viewfunction.participantManagementService.util;
 
-import com.viewfunction.participantManagement.util.RuntimeEnvironmentHandler;
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;

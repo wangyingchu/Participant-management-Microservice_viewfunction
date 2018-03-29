@@ -24,7 +24,7 @@ import org.apache.cxf.jaxrs.ext.multipart.MultipartBody;
 
 import com.viewfunction.participantManagement.operation.util.ParticipantOperationUtil;
 import com.viewfunction.participantManagement.util.PropertyHandler;
-import com.viewfunction.participantManagement.util.RuntimeEnvironmentHandler;
+import com.viewfunction.participantManagementService.util.RuntimeEnvironmentHandler;
 import org.springframework.stereotype.Service;
 
 @Service
